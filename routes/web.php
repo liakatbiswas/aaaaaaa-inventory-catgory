@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login',[UserController::class,'login']);
-Route::post('/registration',[UserController::class,'registration']);
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/registration', [UserController::class, 'registration']);
+Route::post('/sendOtp', [UserController::class, 'sendOtp']);
