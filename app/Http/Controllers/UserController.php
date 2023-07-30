@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\JWTToken;
-use App\Mail\OTPMail;
-use App\Models\User;
 use Exception;
+use App\Models\User;
+use App\Mail\OTPMail;
+use App\Helper\JWTToken;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -124,4 +125,29 @@ class UserController extends Controller
             ], 401);
         }
     } // end resetPassword
+
+
+
+    function LoginPage():View{
+        return view('pages.auth.login-page');
+    }
+
+    function RegistrationPage():View{
+        return view('pages.auth.registration-page');
+    }
+    function SendOtpPage():View{
+        return view('pages.auth.send-otp-page');
+    }
+    function VerifyOTPPage():View{
+        return view('pages.auth.verify-otp-page');
+    }
+
+    function ResetPasswordPage():View{
+        return view('pages.auth.reset-pass-page');
+    }
+
+    function ProfilePage():View{
+        return view('pages.dashboard.profile-page');
+    }
+
 }
