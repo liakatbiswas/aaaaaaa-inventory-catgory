@@ -48,7 +48,7 @@
             [Provide more details about the purpose of the email, including any relevant background information or
             context.]<br><br>
 
-            <h1 style="text-align: center;">Your OTP code is: {{ $otp }}</h1>
+            <h1 style="text-align: center;">Your OTP code is: <u>{{ $otp }}</u></h1>
             I would appreciate your assistance in [specifically state what you are seeking or how you would like the
             recipient to help].<br><br>
             In addition, I wanted to inquire about [mention any other relevant questions or topics].<br><br>

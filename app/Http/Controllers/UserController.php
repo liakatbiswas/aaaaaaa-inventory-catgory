@@ -104,4 +104,24 @@ class UserController extends Controller
             ], 200);
         }
     } // end verifyOtp
+
+    public function resetPassword(Request $request)
+    {
+        try {
+            $email = $request->header('email');
+            $password = $request->input('password');
+
+            User::where('email', '=', $email)->update(['password' => $password]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Request Successful',
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Something Went Wrong',
+            ], 401);
+        }
+    } // end resetPassword
 }

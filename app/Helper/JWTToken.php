@@ -12,7 +12,7 @@ class JWTToken
 {
     public static function CreateToken($userEmail): string
     {
-        $key = env('JWT_KET');
+        $key = env('JWT_KEY');
 
         $payload = [
             'iss' => 'laravel-token',
@@ -28,7 +28,7 @@ class JWTToken
 
     public static function CreateTokenForSetPassword($userEmail): string
     {
-        $key = env('JWT_KET');
+        $key = env('JWT_KEY');
 
         $payload = [
             'iss' => 'laravel-token',
@@ -39,8 +39,6 @@ class JWTToken
 
         return JWT::encode($payload, $key, 'HS256');
     }
-
-
 
 
     public static function VerifyToken($token): string
