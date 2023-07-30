@@ -47,8 +47,8 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'User Login Successfully',
-                'token' => $token
-            ], 200);
+                // 'token' => $token
+            ], 200)->cookie('token', $token, 60 * 60 * 8);
         } else {
             return response()->json([
                 'status' => 'failed',
@@ -128,26 +128,31 @@ class UserController extends Controller
 
 
 
-    function LoginPage():View{
+    function LoginPage(): View
+    {
         return view('pages.auth.login-page');
     }
 
-    function RegistrationPage():View{
+    function RegistrationPage(): View
+    {
         return view('pages.auth.registration-page');
     }
-    function SendOtpPage():View{
+    function SendOtpPage(): View
+    {
         return view('pages.auth.send-otp-page');
     }
-    function VerifyOTPPage():View{
+    function VerifyOTPPage(): View
+    {
         return view('pages.auth.verify-otp-page');
     }
 
-    function ResetPasswordPage():View{
+    function ResetPasswordPage(): View
+    {
         return view('pages.auth.reset-pass-page');
     }
 
-    function ProfilePage():View{
+    function ProfilePage(): View
+    {
         return view('pages.dashboard.profile-page');
     }
-
 }
