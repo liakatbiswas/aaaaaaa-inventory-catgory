@@ -25,8 +25,7 @@
                             </div>
                             <div class="col-md-4 p-2">
                                 <label>Password</label>
-                                <input id="password" placeholder="User Password" class="form-control"
-                                    type="password" />
+                                <input id="password" placeholder="User Password" class="form-control" type="password" />
                             </div>
                         </div>
                         <div class="row m-0 p-0">
@@ -40,3 +39,46 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    async function registerUser() {
+        let firstName = document.getElementById('firstName').value;
+        let lastName = document.getElementById('lastName').value;
+        let email = document.getElementById('email').value;
+        let phone = document.getElementById('phone').value;
+        let password = document.getElementById('password').value;
+
+        if (firstName.length == 0) {
+            errorToast("First Name is required");
+        } else if (lastName.length == 0) {
+            errorToast("Last Name is required");
+        } else if (email.length == 0) {
+            errorToast("Email is required");
+        } else if (phone.length == 0) {
+            errorToast("Phone is required");
+        } else if (password.length == 0) {
+            errorToast("Password is required");
+        } else {
+            showLoader();
+            let res = await axios.post("/user-registration", {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                password: password
+            });
+            hideLoader();
+
+            if (res.status === 200 && res.data['status'] === 'success') {
+                successToast(res.data['message']);
+                setTimeout(function(){
+                    window.location.href = "/login";
+
+                },500)
+            } else {
+                errorToast(res.data['message']);
+            }
+        }
+    }
+</script>

@@ -13,7 +13,7 @@
                     <hr />
                     <div class="float-end mt-3">
                         <span>
-                            <a class="text-center ms-3 h6" href="{{ url('/register') }}">Sign Up </a>
+                            <a class="text-center ms-3 h6" href="{{ url('/registration') }}">Sign Up </a>
                             <span class="ms-1">|</span>
                             <a class="text-center ms-3 h6" href="{{ url('/sendOtp') }}">Forget Password</a>
                         </span>
@@ -35,11 +35,17 @@
             errorToast("Password is required");
         } else {
             showLoader();
-            let res = await axios.post("/user-login", { email: email, password: password });
+            let res = await axios.post("/user-login", {
+                email: email,
+                password: password
+            });
             hideLoader();
 
             if (res.status === 200 && res.data['status'] === 'success') {
-                window.location.href = "/dashboard";
+                successToast(res.data['message']);
+                setTimeout(function() {
+                    window.location.href = "/dashboard";
+                }, 500)
 
             } else {
                 errorToast(res.data['message']);
