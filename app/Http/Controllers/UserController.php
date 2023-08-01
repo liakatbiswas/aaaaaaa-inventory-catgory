@@ -127,6 +127,10 @@ class UserController extends Controller
     } // end resetPassword
 
 
+    public function logout() {
+        return redirect('/login')->cookie('token','',-1);
+    }
+
 
     function LoginPage(): View
     {
