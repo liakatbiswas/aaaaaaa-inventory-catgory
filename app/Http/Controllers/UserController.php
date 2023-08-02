@@ -40,10 +40,12 @@ class UserController extends Controller
     {
         $user =   User::where('email', '=', $request->input('email'))
             ->where('password', '=', $request->input('password'))
-            ->count();
+            // ->count();
+            ->select('id')->first();
 
-        if ($user == 1) {
-            $token = JWTToken::CreateToken($request->input('email'));
+
+        if ($user !== null) {
+            $token = JWTToken::CreateToken($request->input('email'), $user->id);
             return response()->json([
                 'status' => 'success',
                 'message' => 'User Login Successfully',
@@ -97,7 +99,7 @@ class UserController extends Controller
                 'status' => 'success',
                 'message' => 'OTP Verification Successful',
                 // 'token' => $token
-            ], 200)->cookie('token',$token,60*24*30);
+            ], 200)->cookie('token', $token, 60 * 24 * 30);
         } else {
             return response()->json([
                 'status' => 'failed',
@@ -127,8 +129,47 @@ class UserController extends Controller
     } // end resetPassword
 
 
-    public function logout() {
-        return redirect('/login')->cookie('token','',-1);
+    public function logout()
+    {
+        return redirect('/login')->cookie('token', '', -1);
+    }
+
+    public function userProfile(Request $request)
+    {
+        $email = $request->header('email');
+        $user = User::where('email', '=', $email)->first();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Request Successful',
+            'data' => $user
+        ], 200);
+    }
+    public function updateUserProfile(Request $request)
+    {
+        try {
+            $email = $request->header('email');
+            $firstName = $request->input('firstName');
+            $lastName = $request->input('lastName');
+            $phone = $request->input('phone');
+            $password = $request->input('password');
+
+            User::where('email', '=', $email)->update([
+                'firstName' =>  $firstName,
+                'lastName' => $lastName,
+                'phone' => $phone,
+                'password' =>   $password
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User Registration Successfully'
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'unauthorized'
+            ], 200);
+        }
     }
 
 
@@ -157,6 +198,6 @@ class UserController extends Controller
 
     function ProfilePage(): View
     {
-        return view('pages.dashboard.profile-page');
+        return view('pages.dashboard.profile');
     }
 }
