@@ -11,6 +11,11 @@
     <link href="{{ asset('backend/css/fontawesome.css') }}" rel="stylesheet" />
     <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet" />
     <link href="{{ asset('backend/css/toastify.min.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('backend/css/jquery.dataTables.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('backend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
+
     <script src="{{ asset('backend/js/toastify-js.js') }}"></script>
     <script src="{{ asset('backend/js/axios.min.js') }}"></script>
     <script src="{{ asset('backend/js/config.js') }}"></script>
@@ -64,7 +69,7 @@
         @yield('content')
     </div>
 
-    <script src="{{ asset('backend/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend/js/bootstrap.bundle.js') }}"></script>
 
     <script>
         function MenuBarClickHandler() {

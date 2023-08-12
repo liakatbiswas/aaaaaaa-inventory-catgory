@@ -200,4 +200,6 @@ class UserController extends Controller
     {
         return view('pages.dashboard.profile');
     }
+
+
 }
