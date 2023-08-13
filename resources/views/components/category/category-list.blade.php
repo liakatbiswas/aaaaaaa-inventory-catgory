@@ -76,13 +76,19 @@
             $('#deleteID').val(id);
         });
 
-        tableData.DataTable({
-            order: [
-                [0, 'asc']
-            ],
-            aLengthMenu: [5, 10, 15, 20, 25],
-        });
+        // tableData.DataTable({
+        //     order: [
+        //         [0, 'asc']
+        //     ],
+        //     aLengthMenu: [5, 10, 15, 20, 25],
+        // });
 
+        new DataTable('#tableData', {
+            order: [
+                [0, 'desc']
+            ],
+            lengthMenu: [5, 10, 15, 20, 30]
+        });
 
     }
 </script>

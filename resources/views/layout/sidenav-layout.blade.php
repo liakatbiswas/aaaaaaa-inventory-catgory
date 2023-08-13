@@ -32,7 +32,7 @@
     <nav class="navbar fixed-top px-0 shadow-sm bg-white">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ url('/dashboard') }}">
                 <span class="icon-nav m-0 h5" onclick="MenuBarClickHandler()">
                     <img class="nav-logo-sm mx-2" src="{{ asset('backend/images/menu.svg') }}" alt="logo" />
                 </span>
@@ -61,8 +61,51 @@
     </nav>
 
 
+
     <div id="sideNavRef" class="side-nav-open">
+
+        <a href="{{ url('/dashboard') }}" class="side-bar-item">
+            <i class="bi bi-graph-up"></i>
+            <span class="side-bar-item-caption">Dashboard</span>
+        </a>
+
+        <a href="#" class="side-bar-item">
+            <i class="bi bi-people"></i>
+            <span class="side-bar-item-caption">Customer</span>
+        </a>
+
+        <a href="{{ url('/categoryPage') }}" class="side-bar-item">
+            <i class="bi bi-list-nested"></i>
+            <span class="side-bar-item-caption">Category</span>
+        </a>
+
+        <a href="{{ url('/productPage') }}" class="side-bar-item">
+            <i class="bi bi-bag"></i>
+            <span class="side-bar-item-caption">Product</span>
+        </a>
+
+        <a href="#" class="side-bar-item">
+            <i class="bi bi-currency-dollar"></i>
+            <span class="side-bar-item-caption">Create Sale</span>
+        </a>
+
+        <a href="#" class="side-bar-item">
+            <i class="bi bi-receipt"></i>
+            <span class="side-bar-item-caption">Invoice</span>
+        </a>
+
+        <a href="#Getting-Started" class="side-bar-item">
+            <i class="bi bi-file-earmark-bar-graph"></i>
+            <span class="side-bar-item-caption">Report</span>
+        </a>
+
     </div>
+
+
+
+
+
+
 
 
     <div id="contentRef" class="content">

@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 
 /*
@@ -37,6 +38,7 @@ Route::get('/resetPassword', [UserController::class, 'ResetPasswordPage'])->midd
 Route::get('/dashboard', [DashboardController::class, 'DashboardPage'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/userProfile', [UserController::class, 'profilePage'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/categoryPage',[CategoryController::class,'categoryPage'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/productPage',[ProductController::class,'productPage'])->middleware([TokenVerificationMiddleware::class]);
 
 
 
@@ -45,6 +47,15 @@ Route::post("/create-category",[CategoryController::class,'categoryCreate'])->mi
 Route::get("/list-category",[CategoryController::class,'categoryList'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/update-category",[CategoryController::class,'categoryUpdate'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/delete-category",[CategoryController::class,'categoryDelete'])->middleware([TokenVerificationMiddleware::class]);
-
 Route::post("/category-by-id",[CategoryController::class,'categoryByID'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
+
+// Product API
+Route::post("/create-product",[ProductController::class,'productCreate'])->middleware([TokenVerificationMiddleware::class]);
+Route::get("/list-product",[ProductController::class,'productList'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/update-product",[ProductController::class,'productUpdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/delete-product",[ProductController::class,'productDelete'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/product-by-id",[ProductController::class,'productByID'])->middleware([TokenVerificationMiddleware::class]);
 

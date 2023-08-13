@@ -17,10 +17,11 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $emails = ["liakatbiswas@gmail.com","nafi@gmail.com","biswas@gmail.com","nishe@gmail.com","demo@gmail.com"];
         return [
-            'firstName' => fake()->name(),
-            'lastName' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'firstName' => fake()->firstName(),
+            'lastName' => fake()->lastName(),
+            'email' => fake()->unique()->randomElement($emails),
             'phone' => fake()->phoneNumber(),
             'password' => 12345
         ];
